@@ -33,7 +33,7 @@
                 link__hover-effect--black 
               ">Search Movies</a>
         </li>
-        <li class-="nav__link">
+        <li class="nav__link">
           <a href="mailto:crystalquigley@example.com" class="
                 nav__link--anchor
                 nav__link--anchor-primary 
@@ -51,14 +51,21 @@
           </p>
         </div>
       <div class="input-wrapper">
-        <input type="text" placeholder="Search by title, genre or keyword ">
-          <button class="not-loading">
+        <input id="movieInput" type="text" placeholder="Search by title, genre or keyword ">
+          <button id="searchBtn" class="not-loading">
           Search
           </button>
       </div>
-      <div data-v-390ceb07="" class="overlay"></div>
+    
+      <div class="overlay"></div>
       </div>
     </div>
+    <section id="results">
+      <div class="results__container row">
+        <h2 class="results__title">Search Results</h2>
+        <div class="results__grid">
+          <!-- Movie results will be displayed here -->
+        </div>
   
     </div>
   </section>
