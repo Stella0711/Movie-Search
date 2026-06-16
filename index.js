@@ -31,22 +31,32 @@
 
 const input = document.querySelector("#movieInput");
 const button = document.querySelector("#searchBtn");
-const movieContainer = document.querySelector("#results .results__grid");
-    
-button.addEventListener("click", async () => {
-    const movieTitle = input.value;
+const movieContainer = document.querySelector(".results__grid");
 
-    console.log(movieTitle);
+async function searchMovies() {
+  const movieTitle = input.value;
 
-    const response = await fetch(
-        `http://www.omdbapi.com/?i=tt3896198&apikey=919dd8b6&s=${movieTitle}`
-    );
+  const response = await fetch(
+    `https://www.omdbapi.com/?apikey=919dd8b6&s=${movieTitle}`
+  );
 
-    const data = await response.json();
+  const data = await response.json();
 
-    console.log(data);
-});
+  movieContainer.innerHTML =
+    data.Search
+      .slice(0, 6)
+      .map(movie => movieHTML(movie))
+      .join("");
+}
 
-// this is a test. it works! however, the syntax or formatting is slightly different than what David taught...i think.
+function movieHTML(movie) {
+  return `
+    <div class="movie-card">
+      <img src="${movie.Poster}" alt="">
+      <h3>${movie.Title}</h3>
+      <p>${movie.Year}</p>
+    </div>
+  `;
+}
 
 
