@@ -29,12 +29,15 @@
 //          </div>`;
 //   }
 
-const input = document.querySelector("#movieInput");
-const button = document.querySelector("#searchBtn");
+let currentMovies = [];
+
+const sortFilter = document.querySelector("#sortFilter");
+const movieInput = document.querySelector("#movieInput");
+const searchButton = document.querySelector("#searchBtn");
 const movieContainer = document.querySelector(".results__grid");
 
 async function searchMovies() {
-  const movieTitle = input.value;
+  const movieTitle = movieInput.value;
 
   const response = await fetch(
     `https://www.omdbapi.com/?apikey=919dd8b6&s=${movieTitle}`
@@ -42,8 +45,45 @@ async function searchMovies() {
 
   const data = await response.json();
 
+  if (!data.Search) {
+    movieContainer.innerHTML = "<p>No movies found.</p>";
+    return;
+  }
+
+  currentMovies = data.Search; // 👈 store results
+
+  renderMovies();
+}
+
+function filterMovies(event) {
+  const value = event.target.value;
+
+  if (value === "az") {
+    currentMovies.sort((a, b) =>
+      a.Title.localeCompare(b.Title)
+    );
+  }
+
+  if (value === "za") {
+    currentMovies.sort((a, b) =>
+      b.Title.localeCompare(a.Title)
+    );
+  }
+
+  if (value === "yearAsc") {
+    currentMovies.sort((a, b) => a.Year - b.Year);
+  }
+
+  if (value === "yearDesc") {
+    currentMovies.sort((a, b) => b.Year - a.Year);
+  }
+
+  renderMovies();
+}
+
+function renderMovies() {
   movieContainer.innerHTML =
-    data.Search
+    currentMovies
       .slice(0, 6)
       .map(movie => movieHTML(movie))
       .join("");

@@ -61,12 +61,20 @@
       </div>
     </div>
     <section id="results">
+      <div class="container">
       <div class="results__container row">
         <h2 class="results__title">Search Results</h2>
+        <select id="sortFilter" onchange="filterMovies(event)">
+            <option value="" disabled="" selected="">Sort</option>
+            <option value="A_TO_Z">Movies, A to Z</option>
+            <option value="Z_TO_A">Movies, Z to A</option>
+            <option value="yearAsc">Oldest</option>
+            <option value="yearDesc">Newest</option>
+          </select>
         <div class="results__grid">
           <!-- Movie results will be displayed here -->
         </div>
-  
+      </div>
     </div>
   </section>
   <footer>
