@@ -58,16 +58,16 @@ async function searchMovies() {
 function filterMovies(event) {
   const value = event.target.value;
 
-  if (value === "az") {
+  if (value === "A_TO_Z") {
     currentMovies.sort((a, b) =>
       a.Title.localeCompare(b.Title)
-    );
+  );
   }
 
-  if (value === "za") {
+  if (value === "Z_TO_A") {
     currentMovies.sort((a, b) =>
       b.Title.localeCompare(a.Title)
-    );
+  );
   }
 
   if (value === "yearAsc") {
