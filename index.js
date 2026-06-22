@@ -34,6 +34,8 @@ let currentMovies = [];
 const sortFilter = document.querySelector("#sortFilter");
 const movieInput = document.querySelector("#movieInput");
 const movieContainer = document.querySelector(".results__grid");
+const overlay = document.querySelector(".overlay");
+const resultsTitle = document.querySelector("#resultsTitle");
 
 movieInput.addEventListener("keypress", function(event) {
   if (event.key === "Enter") {
@@ -44,17 +46,23 @@ movieInput.addEventListener("keypress", function(event) {
 async function searchMovies() {
   const movieTitle = movieInput.value;
 
+  resultsTitle.textContent = `Search Results for "${movieTitle}"`;
+
  movieContainer.innerHTML = `
   <div class="loading">
     Loading movies...
   </div>
 `;
 
+  overlay.style.display = "flex";
+
   const response = await fetch(
     `https://www.omdbapi.com/?apikey=919dd8b6&s=${movieTitle}`
   );
 
   const data = await response.json();
+
+  overlay.style.display = "none";
 
   if (!data.Search) {
     movieContainer.innerHTML = "<p>No movies found.</p>";

@@ -125,7 +125,7 @@ nav {
 }
 
 .nav__link--anchor-primary:hover {
-    background-color: #f2ff00;
+    background-color: #3eb8ff;
 }
 
 .personal__logo {
@@ -136,7 +136,7 @@ nav {
 }
 
 
-/* THE HERO SEARCH */
+/* THE MOVIE SEARCH */
 
 .input-wrapper {
     width: 100%;
@@ -224,6 +224,19 @@ button.not-loading {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.16);
     margin-bottom: 28px;
     animation: animate-profile-picture 800ms 200ms backwards;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.fa-spinner {
+  font-size: 48px;
 }
 
 @keyframes animate-profile-picture {

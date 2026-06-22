@@ -57,13 +57,15 @@
           </button>
       </div>
     
-      <div class="overlay"></div>
+      <div class="overlay">
+        <i class="fas fa-spinner"></i>
+      </div>
       </div>
     </div>
     <section id="results">
       <div class="container">
       <div class="results__container row">
-        <h2 class="results__title">Search Results</h2>
+        <h2 id="resultsTitle" class="results__title">Search Results</h2>
         <select id="sortFilter" onchange="filterMovies(event)">
             <option value="" disabled="" selected="">Sort</option>
             <option value="A_TO_Z">Movies, A to Z</option>
